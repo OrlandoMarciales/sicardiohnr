@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SeDiagnosticospacientes" table="se_diagnosticospacientes">
+    <indexes>
+      <index name="IDX_7B1C0982BF396750" columns="id"/>
+    </indexes>
+    <id name="iddiagnostico" type="bigint" column="iddiagnostico">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="diagnostico1" type="string" column="diagnostico1" nullable="true"/>
+    <field name="diagnostico2" type="string" column="diagnostico2" nullable="true"/>
+    <field name="diagnostico3" type="string" column="diagnostico3" nullable="true"/>
+    <field name="procedimientos" type="string" column="procedimientos" nullable="true"/>
+    <field name="examenesgabinete" type="string" column="examenesgabinete" nullable="true"/>
+    <many-to-one field="id" target-entity="CtlCie10">
+      <join-columns>
+        <join-column name="id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

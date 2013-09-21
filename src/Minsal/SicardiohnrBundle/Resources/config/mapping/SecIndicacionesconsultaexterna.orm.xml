@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SecIndicacionesconsultaexterna" table="sec_indicacionesconsultaexterna">
+    <indexes>
+      <index name="muestra_fk" columns="idhistorialclinico"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="sec_indiesconexter_pk" columns="idindicacionesconsultaexterna"/>
+    </unique-constraints>
+    <id name="idindicacionesconsultaexterna" type="bigint" column="idindicacionesconsultaexterna">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="indicacionesmedicas" type="string" column="indicacionesmedicas" nullable="true"/>
+    <field name="plantratamiento" type="string" column="plantratamiento" nullable="true"/>
+    <many-to-one field="idhistorialclinico" target-entity="SecHistorialClinico">
+      <join-columns>
+        <join-column name="idhistorialclinico" referenced-column-name="idhistorialclinico"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

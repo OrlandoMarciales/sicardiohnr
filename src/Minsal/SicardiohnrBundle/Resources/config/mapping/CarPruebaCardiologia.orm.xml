@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CarPruebaCardiologia" table="car_prueba_cardiologia">
+    <indexes>
+      <index name="agrega_fk" columns="id_imagen"/>
+      <index name="realiza_fk" columns="id_usuario"/>
+      <index name="tiene_fk" columns="id_historial_clinico"/>
+      <index name="agregan_fk" columns="id_documento"/>
+      <index name="IDX_C0BB7B27B480604" columns="id_fos_user_user"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="car_pruebas_cardiologia_pk" columns="id_prueba_cardiologia"/>
+    </unique-constraints>
+    <id name="idPruebaCardiologia" type="bigint" column="id_prueba_cardiologia">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="idUsuario" type="bigint" column="id_usuario" nullable="true"/>
+    <field name="idHistorialClinico" type="bigint" column="id_historial_clinico" nullable="true"/>
+    <field name="fechaPrueba" type="date" column="fecha_prueba" nullable="true"/>
+    <field name="horaPrueba" type="time" column="hora_prueba" nullable="true"/>
+    <field name="lecturaDePrueba" type="text" column="lectura_de_prueba" nullable="true"/>
+    <many-to-one field="idFosUserUser" target-entity="FosUserUser">
+      <join-columns>
+        <join-column name="id_fos_user_user" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idDocumento" target-entity="CarDocumento">
+      <join-columns>
+        <join-column name="id_documento" referenced-column-name="id_documento"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idImagen" target-entity="CarImagen">
+      <join-columns>
+        <join-column name="id_imagen" referenced-column-name="id_imagen"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

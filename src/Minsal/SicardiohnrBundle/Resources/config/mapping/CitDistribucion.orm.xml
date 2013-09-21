@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CitDistribucion" table="cit_distribucion">
+    <indexes>
+      <index name="IDX_714607E890253C7" columns="id_empleado"/>
+      <index name="IDX_714607EDCF905A" columns="id_rango_horas"/>
+    </indexes>
+    <id name="id" association-key="true"/>
+    <field name="codigo" type="integer" column="codigo" nullable="true"/>
+    <field name="idDistribucionMedico" type="integer" column="id_distribucion_medico" nullable="true"/>
+    <field name="idTipoConsulta" type="integer" column="id_tipo_consulta" nullable="true"/>
+    <field name="primera" type="smallint" column="primera" nullable="true"/>
+    <field name="subsecuente" type="integer" column="subsecuente" nullable="true"/>
+    <field name="mes" type="integer" column="mes" nullable="true"/>
+    <field name="yrs" type="integer" column="yrs" nullable="true"/>
+    <field name="dia" type="integer" column="dia" nullable="true"/>
+    <field name="idConsultorio" type="integer" column="id_consultorio" nullable="true"/>
+    <field name="idAtencAreModEstab" type="integer" column="id_atenc_are_mod_estab" nullable="true"/>
+    <one-to-one field="id" target-entity="MntAtenAreaModEstab">
+      <join-columns>
+        <join-column name="id" referenced-column-name="id"/>
+      </join-columns>
+    </one-to-one>
+    <many-to-one field="idRangoHoras" target-entity="MntRangoHoras">
+      <join-columns>
+        <join-column name="id_rango_horas" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEmpleado" target-entity="MntEmpleado">
+      <join-columns>
+        <join-column name="id_empleado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CarEstadoCita" table="car_estado_cita">
+    <unique-constraints>
+      <unique-constraint name="car_estado_cita_pk" columns="id_estado_cita"/>
+    </unique-constraints>
+    <id name="idEstadoCita" type="bigint" column="id_estado_cita">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="estadoDescripcion" type="string" column="estado_descripcion" nullable="true"/>
+  </entity>
+</doctrine-mapping>

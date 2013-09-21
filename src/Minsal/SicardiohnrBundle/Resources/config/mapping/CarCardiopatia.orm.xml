@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CarCardiopatia" table="car_cardiopatia">
+    <unique-constraints>
+      <unique-constraint name="car_cardiopatias_pk" columns="id_cardiopatia"/>
+    </unique-constraints>
+    <id name="idCardiopatia" type="bigint" column="id_cardiopatia">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="cardiopatiaNombre" type="integer" column="cardiopatia_nombre" nullable="true"/>
+    <field name="cardiopatiaAlto" type="integer" column="cardiopatia_alto" nullable="true"/>
+    <field name="cardiopatiaMedio" type="integer" column="cardiopatia_medio" nullable="true"/>
+    <field name="cardiopatiaBajo" type="integer" column="cardiopatia_bajo" nullable="true"/>
+    <field name="cie10" type="string" column="cie10" nullable="true"/>
+    <many-to-many field="idLabExamen" target-entity="LabExamen" inversed-by="idCardiopatia">
+      <join-table name="car_asignado">
+        <join-columns>
+          <join-column name="id_cardiopatia" referenced-column-name="id_cardiopatia"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="id_lab_examen" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

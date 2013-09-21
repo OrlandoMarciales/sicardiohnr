@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CarPerfilLabexamen" table="car_perfil_labexamen">
+    <id name="idPerfilLabExamen" type="bigint" column="id_perfil_lab_examen">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="nombrePerfilLabExamen" type="string" column="nombre_perfil_lab_examen" nullable="true"/>
+    <field name="estadoPerfilLabExamen" type="boolean" column="estado_perfil_lab_examen" nullable="true"/>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SecDetallesolicitudestudio" table="sec_detallesolicitudestudio">
+    <indexes>
+      <index name="detalla_fk" columns="idsolicitudestudio"/>
+      <index name="selecciona_fk" columns="idlabexamen"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="sec_detallesolicitudestudio_pk" columns="iddetallesolicitud"/>
+    </unique-constraints>
+    <id name="idseguimiento" type="integer" column="idseguimiento"/>
+    <id name="idhistorialclinico" type="bigint" column="idhistorialclinico"/>
+    <id name="control" type="string" column="control"/>
+    <id name="ingreso" type="string" column="ingreso"/>
+    <id name="alta" type="boolean" column="alta"/>
+    <id name="iddetallesolicitud" type="bigint" column="iddetallesolicitud"/>
+    <field name="estadodetalle" type="string" column="estadodetalle" nullable="true"/>
+    <field name="indicacion" type="string" column="indicacion" nullable="true"/>
+    <many-to-one field="idsolicitudestudio" target-entity="SecSolicitudestudios">
+      <join-columns>
+        <join-column name="idsolicitudestudio" referenced-column-name="idsolicitudestudio"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idlabexamen" target-entity="LabExamen">
+      <join-columns>
+        <join-column name="idlabexamen" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

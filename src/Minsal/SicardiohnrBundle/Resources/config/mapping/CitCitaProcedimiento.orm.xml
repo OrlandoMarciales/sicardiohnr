@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CitCitaProcedimiento" table="cit_cita_procedimiento">
+    <indexes>
+      <index name="IDX_27CD93918627A85B" columns="id_aten_area_mod_estab"/>
+      <index name="IDX_27CD9391B849D575" columns="id_ciq"/>
+      <index name="IDX_27CD9391890253C7" columns="id_empleado"/>
+      <index name="IDX_27CD93917DFA12F6" columns="id_establecimiento"/>
+      <index name="IDX_27CD93916A540E" columns="id_estado"/>
+      <index name="IDX_27CD9391701624C4" columns="id_expediente"/>
+      <index name="IDX_27CD9391DCF905A" columns="id_rango_horas"/>
+      <index name="IDX_27CD939139D50C80" columns="idpruebacardiologia"/>
+      <index name="IDX_27CD9391CF9820D5" columns="idreferidos"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="fecha" type="date" column="fecha" nullable="true"/>
+    <field name="ipCita" type="string" column="ip_cita" nullable="true"/>
+    <field name="ipComfirma" type="string" column="ip_comfirma" nullable="true"/>
+    <field name="idhistorialclinico" type="bigint" column="idhistorialclinico" nullable="true"/>
+    <field name="horacita" type="time" column="horacita" nullable="true"/>
+    <many-to-one field="idRangoHoras" target-entity="MntRangoHoras">
+      <join-columns>
+        <join-column name="id_rango_horas" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idpruebacardiologia" target-entity="CarPruebaCardiologia">
+      <join-columns>
+        <join-column name="idpruebacardiologia" referenced-column-name="id_prueba_cardiologia"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idreferidos" target-entity="CarReferido">
+      <join-columns>
+        <join-column name="idreferidos" referenced-column-name="id_referido"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idExpediente" target-entity="MntExpediente">
+      <join-columns>
+        <join-column name="id_expediente" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstado" target-entity="CarEstadoCita">
+      <join-columns>
+        <join-column name="id_estado" referenced-column-name="id_estado_cita"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCiq" target-entity="CtlCiq">
+      <join-columns>
+        <join-column name="id_ciq" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEmpleado" target-entity="MntEmpleado">
+      <join-columns>
+        <join-column name="id_empleado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento">
+      <join-columns>
+        <join-column name="id_establecimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idAtenAreaModEstab" target-entity="MntAtenAreaModEstab">
+      <join-columns>
+        <join-column name="id_aten_area_mod_estab" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

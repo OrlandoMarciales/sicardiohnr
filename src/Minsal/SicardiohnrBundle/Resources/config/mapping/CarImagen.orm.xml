@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CarImagen" table="car_imagen">
+    <unique-constraints>
+      <unique-constraint name="car_imagen_pk" columns="id_imagen"/>
+    </unique-constraints>
+    <id name="idImagen" type="integer" column="id_imagen">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="imagenNombre" type="string" column="imagen_nombre" nullable="true"/>
+    <field name="imagenFecha" type="date" column="imagen_fecha" nullable="true"/>
+    <field name="imagenTamanio" type="integer" column="imagen_tamanio" nullable="true"/>
+    <field name="imagenTipo" type="string" column="imagen_tipo" nullable="true"/>
+    <field name="imagen" type="integer" column="imagen" nullable="true"/>
+  </entity>
+</doctrine-mapping>

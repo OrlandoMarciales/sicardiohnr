@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CarResutado" table="car_resutado">
+    <indexes>
+      <index name="determinan_fk" columns="id_prueba_cardiologia"/>
+      <index name="determina_fk" columns="id_catalogo_procedimiento"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="car_resutado_pk" columns="id_resultado"/>
+    </unique-constraints>
+    <id name="idResultado" type="bigint" column="id_resultado">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="resultadoValor" type="string" column="resultado_valor" nullable="true"/>
+    <field name="resultadoMedida" type="string" column="resultado_medida" nullable="true"/>
+    <many-to-one field="idPruebaCardiologia" target-entity="CarPruebaCardiologia">
+      <join-columns>
+        <join-column name="id_prueba_cardiologia" referenced-column-name="id_prueba_cardiologia"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCatalogoProcedimiento" target-entity="CarCtlProcedimientos">
+      <join-columns>
+        <join-column name="id_catalogo_procedimiento" referenced-column-name="idcatalogoprocedimientos"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

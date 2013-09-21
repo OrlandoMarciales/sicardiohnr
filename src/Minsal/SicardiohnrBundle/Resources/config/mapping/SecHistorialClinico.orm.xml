@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SecHistorialClinico" table="sec_historial_clinico">
+    <indexes>
+      <index name="relaciona_fk" columns="idexpediente"/>
+      <index name="IDX_B5886216BF396750" columns="id"/>
+      <index name="IDX_B5886216303771D6" columns="iddiagnosticopaciente"/>
+      <index name="IDX_B58862163B65793E" columns="idmtnareamodestable"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="sec_historial_clinico_pk" columns="idhistorialclinico"/>
+    </unique-constraints>
+    <id name="idhistorialclinico" type="bigint" column="idhistorialclinico">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="fechaconsulta" type="date" column="fechaconsulta" nullable="true"/>
+    <field name="piloto" type="integer" column="piloto" nullable="true"/>
+    <many-to-one field="idexpediente" target-entity="MntExpediente">
+      <join-columns>
+        <join-column name="idexpediente" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idmtnareamodestable" target-entity="MntAtenAreaModEstab">
+      <join-columns>
+        <join-column name="idmtnareamodestable" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="iddiagnosticopaciente" target-entity="SeDiagnosticospacientes">
+      <join-columns>
+        <join-column name="iddiagnosticopaciente" referenced-column-name="iddiagnostico"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="id" target-entity="MntExpediente">
+      <join-columns>
+        <join-column name="id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

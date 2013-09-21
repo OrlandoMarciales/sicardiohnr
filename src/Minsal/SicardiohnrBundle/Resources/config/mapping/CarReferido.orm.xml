@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CarReferido" table="car_referido">
+    <indexes>
+      <index name="IDX_83C416A7DFA12F6" columns="id_establecimiento"/>
+    </indexes>
+    <id name="idReferido" type="integer" column="id_referido">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="referidoPrimerNombre" type="string" column="referido_primer_nombre" nullable="true"/>
+    <field name="referidoPrimerApellido" type="string" column="referido_primer_apellido" nullable="true"/>
+    <field name="referidoDui" type="string" column="referido_dui" nullable="true"/>
+    <field name="referidoNumeroExpediente" type="string" column="referido_numero_expediente" nullable="true"/>
+    <field name="referidoDireccion" type="string" column="referido_direccion" nullable="true"/>
+    <field name="referidoTelefono" type="string" column="referido_telefono" nullable="true"/>
+    <field name="referidoSegundoNombre" type="string" column="referido_segundo_nombre" nullable="true"/>
+    <field name="referidoSegundoApellido" type="string" column="referido_segundo_apellido" nullable="true"/>
+    <many-to-one field="idEstablecimiento" target-entity="CtlEstablecimiento">
+      <join-columns>
+        <join-column name="id_establecimiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

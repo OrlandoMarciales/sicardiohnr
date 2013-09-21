@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CarProcedimienoEstablecimiento" table="car_procedimieno_establecimiento">
+    <indexes>
+      <index name="IDX_3D17DC3A7DFF5D04" columns="id_area_de_estableciemiento"/>
+    </indexes>
+    <id name="idProcedimiento" association-key="true"/>
+    <field name="procedimientoEstablecimientoDescripcion" type="text" column="procedimiento_establecimiento_descripcion" nullable="true"/>
+    <one-to-one field="idProcedimiento" target-entity="CarCtlProcedimientos">
+      <join-columns>
+        <join-column name="id_procedimiento" referenced-column-name="idcatalogoprocedimientos"/>
+      </join-columns>
+    </one-to-one>
+    <many-to-one field="idAreaDeEstableciemiento" target-entity="CtlEstablecimiento">
+      <join-columns>
+        <join-column name="id_area_de_estableciemiento" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

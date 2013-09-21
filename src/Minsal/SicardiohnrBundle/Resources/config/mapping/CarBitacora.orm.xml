@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CarBitacora" table="car_bitacora">
+    <indexes>
+      <index name="registra_fk" columns="id_usuario"/>
+      <index name="IDX_1FB1CBFDBF396750" columns="id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="car_bitacora_pk" columns="id_bitacora"/>
+    </unique-constraints>
+    <id name="idBitacora" type="bigint" column="id_bitacora">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="evento" type="string" column="evento" nullable="true"/>
+    <field name="bitacoraFecha" type="date" column="bitacora_fecha" nullable="true"/>
+    <field name="bitacoraHora" type="time" column="bitacora_hora" nullable="true"/>
+    <field name="bitacoraTabla" type="string" column="bitacora_tabla" nullable="true"/>
+    <many-to-one field="id" target-entity="FosUserUser">
+      <join-columns>
+        <join-column name="id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idUsuario" target-entity="MntEmpleado">
+      <join-columns>
+        <join-column name="id_usuario" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

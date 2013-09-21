@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CarDocumento" table="car_documento">
+    <unique-constraints>
+      <unique-constraint name="car_documento_pk" columns="id_documento"/>
+    </unique-constraints>
+    <id name="idDocumento" type="integer" column="id_documento">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="documentoNombre" type="string" column="documento_nombre" nullable="true"/>
+    <field name="documentoFecha" type="string" column="documento_fecha" nullable="true"/>
+    <field name="documentoDocumento" type="integer" column="documento_documento" nullable="true"/>
+  </entity>
+</doctrine-mapping>

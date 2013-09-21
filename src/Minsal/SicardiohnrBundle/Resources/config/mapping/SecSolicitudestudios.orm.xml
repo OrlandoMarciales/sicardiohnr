@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SecSolicitudestudios" table="sec_solicitudestudios">
+    <indexes>
+      <index name="pide_fk" columns="idhistorialclinico"/>
+    </indexes>
+    <id name="idsolicitudestudio" type="bigint" column="idsolicitudestudio">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="solicitudestudioestado" type="string" column="solicitudestudioestado" nullable="true"/>
+    <field name="solicitudestudiofecha" type="date" column="solicitudestudiofecha" nullable="true"/>
+    <many-to-one field="idhistorialclinico" target-entity="SecHistorialClinico">
+      <join-columns>
+        <join-column name="idhistorialclinico" referenced-column-name="idhistorialclinico"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

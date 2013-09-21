@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CarLleva" table="car_lleva">
+    <indexes>
+      <index name="lleva_fk" columns="id_diagnostico"/>
+      <index name="lleva2_fk" columns="id_cardiopatia"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="lleva_pk" columns="id_diagnostico,id_cardiopatia"/>
+    </unique-constraints>
+    <id name="idDiagnostico" type="bigint" column="id_diagnostico"/>
+    <id name="idCardiopatia" association-key="true"/>
+    <one-to-one field="idCardiopatia" target-entity="CarCardiopatia">
+      <join-columns>
+        <join-column name="id_cardiopatia" referenced-column-name="id_cardiopatia"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

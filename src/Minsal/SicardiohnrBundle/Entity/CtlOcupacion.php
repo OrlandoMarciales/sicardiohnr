@@ -5,12 +5,12 @@ namespace Minsal\SicardiohnrBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CtlAreaCotizante
+ * CtlOcupacion
  *
- * @ORM\Table(name="ctl_area_cotizante")
+ * @ORM\Table(name="ctl_ocupacion")
  * @ORM\Entity
  */
-class CtlAreaCotizante
+class CtlOcupacion
 {
     /**
      * @var integer
@@ -18,14 +18,14 @@ class CtlAreaCotizante
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="ctl_area_cotizante_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\SequenceGenerator(sequenceName="ctl_ocupacion_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=300, nullable=false)
+     * @ORM\Column(name="nombre", type="string", length=100, nullable=false)
      */
     private $nombre;
 

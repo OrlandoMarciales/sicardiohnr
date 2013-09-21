@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CarHoraEmpleado" table="car_hora_empleado">
+    <indexes>
+      <index name="IDX_26B165DD890253C7" columns="id_empleado"/>
+    </indexes>
+    <id name="idHoraEmpeado" type="integer" column="id_hora_empeado">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="diaDeTrabajo" type="string" column="dia_de_trabajo" nullable="true"/>
+    <field name="horaInicial" type="time" column="hora_inicial" nullable="true"/>
+    <field name="horaFinal" type="time" column="hora_final" nullable="true"/>
+    <field name="cantidadDeProcedimiento" type="integer" column="cantidad_de_procedimiento" nullable="true"/>
+    <field name="cantidadProcedimientoExtra" type="integer" column="cantidad_procedimiento_extra" nullable="true"/>
+    <many-to-one field="idEmpleado" target-entity="MntEmpleado">
+      <join-columns>
+        <join-column name="id_empleado" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
